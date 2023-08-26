@@ -4,21 +4,22 @@ import { Outlet } from 'react-router-dom';
 import styles from './destination.module.css';
 
 interface DestinationProps {
+
     title: string,
     subtitle: string,
+    subtitlenum: string
      image: string,
       description: string,
        distance: string,
         travelTime: string
 }
 
-export  const Destination:FC<DestinationProps> = ({ title, subtitle, image, description, distance, travelTime }) =>{
-//   const { title, subtitle, image, description, distance, travelTime } = props;
+export  const Destination:FC<DestinationProps> = ({ title, subtitle, subtitlenum, image, description, distance, travelTime }) =>{
 
   return (
     <section className={styles.main}>
       <div className={styles.titlePlanet}>
-        <h2 className={styles.title}>{subtitle}</h2>
+        <h2 className={styles.title}><span>{subtitlenum}</span>{subtitle}</h2>
         <div className={styles.planet}>
           <img src={image} alt={title} />
         </div>

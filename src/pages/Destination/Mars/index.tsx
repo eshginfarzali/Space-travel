@@ -1,17 +1,54 @@
-import {Destination} from '../DestinationComponent'
-import marsImg from '../../../assets/destination/image-mars.webp';
+import { useState, useEffect } from 'react';
+import { Destination } from '../DestinationComponent';
+import marsImg from '../../../assets/destination/image-mars.webp'
+
+
+interface DestinationData {
+  name: string;
+  images: {
+    png: string;
+    webp: string;
+  };
+  description: string;
+  distance: string;
+  travel: string;
+}
+
+
+
+interface Data {
+  destinations: DestinationData[];
+ 
+}
+
 export function Mars() {
+  const [marsData, setmarsData] = useState<DestinationData | null>(null);
+
+  useEffect(() => {
+    fetch('../../../../data.json')  
+      .then(response => response.json())
+      .then((data: Data) => {
+        const marsDestination = data.destinations.find(destination => destination.name === 'Mars');
+        if (marsDestination) {
+          setmarsData(marsDestination);
+        }
+      });
+  }, []);
+
   return (
-    <Destination
-      title="MARS"
-      subtitle="02 PICK YOUR DESTINATION"
-      image={marsImg}
-      description="Don’t forget to pack your hiking boots. 
-      You’ll need them to tackle Olympus Mons, the tallest 
-      planetary mountain in our solar system. 
-      It’s two and a half times the size of Everest!"
-      distance="225 MIL. KM"
-      travelTime="9 MONTHS"
-    />
+    <div>
+      {marsData && (
+        <Destination
+          title={marsData.name}
+          subtitlenum='02'
+          subtitle="PICK YOUR DESTINATION"
+          image={marsImg}
+          description={marsData.description}
+          distance={marsData.distance}
+          travelTime={marsData.travel}
+        />
+      )}
+    </div>
   );
 }
+

@@ -1,18 +1,54 @@
-import {Destination} from '../DestinationComponent'
-import moonImg from '../../../assets/destination/image-moon.webp';
+import { useState, useEffect } from 'react';
+import { Destination } from '../DestinationComponent';
+import moonImg from '../../../assets/destination/image-moon.webp'
+
+
+interface DestinationData {
+  name: string;
+  images: {
+    png: string;
+    webp: string;
+  };
+  description: string;
+  distance: string;
+  travel: string;
+}
+
+
+
+interface Data {
+  destinations: DestinationData[];
+ 
+}
+
 export function Moon() {
+  const [moonData, setmoonData] = useState<DestinationData | null>(null);
+
+  useEffect(() => {
+    fetch('../../../../data.json')  
+      .then(response => response.json())
+      .then((data: Data) => {
+        const moonDestination = data.destinations.find(destination => destination.name === 'Moon');
+        if (moonDestination) {
+          setmoonData(moonDestination);
+        }
+      });
+  }, []);
+
   return (
-    <Destination
-      title="MOON"
-      subtitle="01 PICK YOUR DESTINATION"
-      image={moonImg}
-      description="See our planet as you’ve never seen 
-      it before. A perfect relaxing trip away to 
-      help regain perspective and come back refreshed. 
-      While you’re there, take in some history by visiting the 
-      Luna 2 and Apollo 11 landing sites."
-      distance="384,400 KM"
-      travelTime="3 DAYS"
-    />
+    <div>
+      {moonData && (
+        <Destination
+          title={moonData.name}
+          subtitlenum='01'
+          subtitle="PICK YOUR DESTINATION"
+          image={moonImg}
+          description={moonData.description}
+          distance={moonData.distance}
+          travelTime={moonData.travel}
+        />
+      )}
+    </div>
   );
 }
+

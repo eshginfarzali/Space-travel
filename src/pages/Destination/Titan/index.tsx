@@ -1,19 +1,54 @@
+import { useState, useEffect } from 'react';
 import { Destination } from '../DestinationComponent';
 import titanImg from '../../../assets/destination/image-titan.webp'
 
+
+interface DestinationData {
+  name: string;
+  images: {
+    png: string;
+    webp: string;
+  };
+  description: string;
+  distance: string;
+  travel: string;
+}
+
+
+
+interface Data {
+  destinations: DestinationData[];
+ 
+}
+
 export function Titan() {
+  const [titanData, setTitanData] = useState<DestinationData | null>(null);
+
+  useEffect(() => {
+    fetch('../../../../data.json')  
+      .then(response => response.json())
+      .then((data: Data) => {
+        const titanDestination = data.destinations.find(destination => destination.name === 'Titan');
+        if (titanDestination) {
+          setTitanData(titanDestination);
+        }
+      });
+  }, []);
+
   return (
-    <Destination
-      title="TITAN"
-      subtitle="04 PICK YOUR DESTINATION"
-      image={titanImg}
-      description="The only moon known to have a dense 
-      atmosphere other than Earth, Titan is a home 
-      away from home (just a few hundred degrees colder!).
-       As a bonus, you get striking views
-        of the Rings of Saturn."
-      distance="31.6 BIL. km"
-      travelTime="7 YEARS"
-    />
+    <div>
+      {titanData && (
+        <Destination
+          title={titanData.name}
+          subtitlenum='04'
+          subtitle="PICK YOUR DESTINATION"
+          image={titanImg}
+          description={titanData.description}
+          distance={titanData.distance}
+          travelTime={titanData.travel}
+        />
+      )}
+    </div>
   );
 }
+
