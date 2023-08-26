@@ -1,0 +1,85 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed&family=Bellefair&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+*, html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: all 0.3ms;
+}
+body {
+  font-family: "Barlow Condensed", sans-serif;
+  font-family: "Instrument Sans", sans-serif;
+  font-family: "Josefin Sans", sans-serif;
+  font-family: "Jost", sans-serif;
+  font-family: "Poppins", sans-serif;
+  font-family: "Barlow Condensed", sans-serif;
+  font-family: "Bellefair", serif;
+  font-family: "Instrument Sans", sans-serif;
+  font-family: "Josefin Sans", sans-serif;
+  font-family: "Jost", sans-serif;
+  font-family: "Poppins", sans-serif;
+}
+a{
+  text-decoration: none;
+  color: inherit;
+}
+li{
+  list-style: none;
+}
+#sidebar .active{
+  position: relative;
+}
+#sidebar .active::after{
+  content: "";
+  position: absolute;
+  bottom: 0;
+  top: 55px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 2px;
+  background-color:var(--text-white); /* Və ya istədiyiniz rəng */
+}
+
+
+#destination .active{
+  position: relative;
+}
+#destination .active::after{
+  content: "";
+  position: absolute;
+  bottom: 0;
+  top: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 2px;
+  background-color:var(--text-white); 
+}
+
+@media (max-width:768px){
+  #sidebar .active::before {
+        content: "";
+        position: absolute;
+        right: -11px;
+        top: 0;
+        bottom: 50%;
+        transform: translateX(-50%);
+        width: 2px;
+        height: 23px;
+        background-color:var(--text-white); 
+      }
+      #sidebar .active::after{
+        content: "";
+        width: 0px;
+        height: 0px;
+      }
+      #destination .active::after {
+        
+        width: 42px;
+        height: 2px;
+      }
+     
+      
+      
+}

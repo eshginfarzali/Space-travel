@@ -1,0 +1,46 @@
+.main{
+    width: 100%;
+    height: 100dvh;
+    background-image: url(../../../assets/destination/background-destination-desktop.jpg);
+    background-repeat: no-repeat;
+    background-size: cover; 
+    margin: 0;
+    padding: 0;
+}
+
+header>ul{
+    display: flex;
+    color: #fff;
+    gap: 40px;
+    padding: 190px 350px 15px 0px;
+    justify-content: end;
+
+}
+
+@media (max-width:1124px){
+    header>ul{
+       justify-content: center;
+       padding: unset;
+       padding-top: 460px ;
+    }
+   
+} 
+
+
+@media (max-width:1024px){
+    .main {
+        background-image: url(../../../assets/destination/background-destination-tablet.jpg);
+        height: 100dvh;
+    } 
+}
+
+
+
+
+@media (max-width:768px){
+    .main {
+        background-image: url(../../../assets/destination/background-destination-mobile.jpg);
+        height: 110dvh;
+
+    } 
+}
