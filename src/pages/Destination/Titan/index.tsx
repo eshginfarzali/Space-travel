@@ -28,7 +28,7 @@ export function Titan() {
     fetch('../../../../data.json')  
       .then(response => response.json())
       .then((data: Data) => {
-        const titanDestination = data.destinations.find(destination => destination.name === 'Titan');
+        const titanDestination = data.destinations.find(destination => destination.name === 'TITAN');
         if (titanDestination) {
           setTitanData(titanDestination);
         }

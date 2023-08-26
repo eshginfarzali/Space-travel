@@ -28,7 +28,7 @@ export function Moon() {
     fetch('../../../../data.json')  
       .then(response => response.json())
       .then((data: Data) => {
-        const moonDestination = data.destinations.find(destination => destination.name === 'Moon');
+        const moonDestination = data.destinations.find(destination => destination.name === 'MOON');
         if (moonDestination) {
           setmoonData(moonDestination);
         }

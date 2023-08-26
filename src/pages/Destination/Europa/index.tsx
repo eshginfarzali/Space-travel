@@ -28,7 +28,7 @@ export function Europa() {
     fetch('../../../../data.json')  
       .then(response => response.json())
       .then((data: Data) => {
-        const europaDestination = data.destinations.find(destination => destination.name === 'Europa');
+        const europaDestination = data.destinations.find(destination => destination.name === 'EUROPA');
         if (europaDestination) {
           seteuropaData(europaDestination);
         }

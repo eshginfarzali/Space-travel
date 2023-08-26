@@ -28,7 +28,7 @@ export function Mars() {
     fetch('../../../../data.json')  
       .then(response => response.json())
       .then((data: Data) => {
-        const marsDestination = data.destinations.find(destination => destination.name === 'Mars');
+        const marsDestination = data.destinations.find(destination => destination.name === 'MARS');
         if (marsDestination) {
           setmarsData(marsDestination);
         }
